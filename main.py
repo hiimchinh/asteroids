@@ -7,6 +7,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     print("Starting asteroids!")
@@ -31,8 +32,12 @@ def main():
     # delta time
     dt = 0
     player = Player(SCREEN_WIDTH /2, SCREEN_HEIGHT / 2)
-    asteroidField = AsteroidField()
-    
+    asteroid_field = AsteroidField()
+
+    # shot
+    shots = pygame.sprite.Group()
+    Shot.containers = (shots, drawable, updatable)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
